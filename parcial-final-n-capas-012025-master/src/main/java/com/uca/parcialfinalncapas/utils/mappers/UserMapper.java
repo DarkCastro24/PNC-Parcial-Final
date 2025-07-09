@@ -20,13 +20,16 @@ public class UserMapper {
     }
 
     public static User toEntityUpdate(UserUpdateRequest userUpdate) {
-        return User.builder()
+        User.UserBuilder builder = User.builder()
                 .id(userUpdate.getId())
                 .nombre(userUpdate.getNombre())
-                .password(userUpdate.getPassword())
-                // Convierte String a Enum:
-                .rol(Rol.valueOf(userUpdate.getRol().name()))
-                .build();
+                .password(userUpdate.getPassword());
+
+        if (userUpdate.getRol() != null) {
+            builder.rol(userUpdate.getRol());
+        }
+
+        return builder.build();
     }
 
     public static UserResponse toDTO(User user) {
@@ -34,8 +37,7 @@ public class UserMapper {
                 .idUsuario(user.getId())
                 .nombre(user.getNombre())
                 .correo(user.getCorreo())
-                // Devuelve el nombre del rol como String:
-                .nombreRol(user.getRol().name())
+                .nombreRol(user.getRol() != null ? user.getRol().name() : null)
                 .build();
     }
 
