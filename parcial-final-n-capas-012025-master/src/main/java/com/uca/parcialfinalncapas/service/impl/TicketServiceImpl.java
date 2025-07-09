@@ -40,7 +40,7 @@ public class TicketServiceImpl implements TicketService {
         var usuarioSoporte = userRepository.findByCorreo(ticket.getCorreoSoporte())
                 .orElseThrow(() -> new UserNotFoundException("Usuario asignado no encontrado con correo: " + ticket.getCorreoSoporte()));
 
-        if (!usuarioSoporte.getNombreRol().equals(Rol.TECH.getValue())) {
+        if (!usuarioSoporte.getRol().name().equals(Rol.TECH.getValue())) {
             throw new BadTicketRequestException("El usuario asignado no es un técnico de soporte");
         }
 
@@ -61,7 +61,7 @@ public class TicketServiceImpl implements TicketService {
         var usuarioSoporte = userRepository.findByCorreo(ticket.getCorreoSoporte())
                 .orElseThrow(() -> new UserNotFoundException("Usuario asignado no encontrado con correo: " + ticket.getCorreoSoporte()));
 
-        if (!usuarioSoporte.getNombreRol().equals(Rol.TECH.getValue())) {
+        if (!usuarioSoporte.getRol().name().equals(Rol.TECH.getValue())) {
             throw new BadTicketRequestException("El usuario asignado no es un técnico de soporte");
         }
 

@@ -4,6 +4,7 @@ import com.uca.parcialfinalncapas.dto.request.UserCreateRequest;
 import com.uca.parcialfinalncapas.dto.request.UserUpdateRequest;
 import com.uca.parcialfinalncapas.dto.response.UserResponse;
 import com.uca.parcialfinalncapas.entities.User;
+import com.uca.parcialfinalncapas.utils.enums.Rol; // Asegúrate de importar el enum
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,7 @@ public class UserMapper {
                 .nombre(userRequest.getNombre())
                 .correo(userRequest.getCorreo())
                 .password(userRequest.getPassword())
-                .nombreRol(userRequest.getNombreRol())
+                .rol(Rol.valueOf(userRequest.getRol().name()))
                 .build();
     }
 
@@ -23,7 +24,8 @@ public class UserMapper {
                 .id(userUpdate.getId())
                 .nombre(userUpdate.getNombre())
                 .password(userUpdate.getPassword())
-                .nombreRol(userUpdate.getNombreRol())
+                // Convierte String a Enum:
+                .rol(Rol.valueOf(userUpdate.getRol().name()))
                 .build();
     }
 
@@ -32,7 +34,8 @@ public class UserMapper {
                 .idUsuario(user.getId())
                 .nombre(user.getNombre())
                 .correo(user.getCorreo())
-                .nombreRol(user.getNombreRol())
+                // Devuelve el nombre del rol como String:
+                .nombreRol(user.getRol().name())
                 .build();
     }
 

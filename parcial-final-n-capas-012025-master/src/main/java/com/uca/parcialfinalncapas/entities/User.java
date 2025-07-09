@@ -1,5 +1,6 @@
 package com.uca.parcialfinalncapas.entities;
 
+import com.uca.parcialfinalncapas.utils.enums.Rol;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +18,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
+
+    @Column(name = "correo")
     private String correo;
+
+    @Column(name = "password")
     private String password;
-    private String nombreRol; // USER o TECH
+    @Enumerated(EnumType.STRING)
+    private Rol rol; // USER o TECH
 }

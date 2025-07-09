@@ -13,6 +13,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tickets")
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 public class TicketController {
     private TicketService ticketService;
 
+    @PreAuthorize("hasRole('TECH')")
     @GetMapping
     public ResponseEntity<GeneralResponse> getAllTickets() {
         return ResponseBuilderUtil.buildResponse("Tickets obtenidos correctamente",
@@ -27,6 +31,7 @@ public class TicketController {
                 ticketService.getAllTickets());
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
     public ResponseEntity<GeneralResponse> getTicketById(@PathVariable Long id) {
         TicketResponse ticket = ticketService.getTicketById(id);
@@ -43,6 +48,7 @@ public class TicketController {
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('TECH')")
     public ResponseEntity<GeneralResponse> updateTicket(@Valid @RequestBody TicketUpdateRequest ticket) {
         TicketResponse updatedTicket = ticketService.updateTicket(ticket);
         return ResponseBuilderUtil.buildResponse("Ticket actualizado correctamente", HttpStatus.OK, updatedTicket);
