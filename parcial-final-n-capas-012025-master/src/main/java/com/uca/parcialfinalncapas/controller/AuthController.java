@@ -1,6 +1,5 @@
 package com.uca.parcialfinalncapas.controller;
 
-<<<<<<< HEAD
 import com.uca.parcialfinalncapas.dto.AuthRequest;
 import com.uca.parcialfinalncapas.dto.AuthResponse;
 import com.uca.parcialfinalncapas.security.JwtUtil;
@@ -30,7 +29,3 @@ public class AuthController {
     }
 }
 
-=======
-public class AuthController {
-}
->>>>>>> ed0d9c3709e92100b0b62f983b939ab4d88d3039

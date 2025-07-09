@@ -62,30 +62,12 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.2.0</version>
         </dependency>
-<<<<<<< HEAD
 
-=======
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.2.0</version> <!-- Usa la versión que coincida con tu Spring Boot -->
-        </dependency>
->>>>>>> ed0d9c3709e92100b0b62f983b939ab4d88d3039
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-<<<<<<< HEAD
-=======
-
-
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
->>>>>>> ed0d9c3709e92100b0b62f983b939ab4d88d3039
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -103,16 +85,10 @@
             <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
-<<<<<<< HEAD
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-=======
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
->>>>>>> ed0d9c3709e92100b0b62f983b939ab4d88d3039
         </dependency>
     </dependencies>
 

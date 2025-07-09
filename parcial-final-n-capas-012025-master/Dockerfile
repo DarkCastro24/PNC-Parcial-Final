@@ -1,14 +1,9 @@
-# Usa una imagen de Java ligera
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
-# Crea el directorio de la app
 WORKDIR /app
 
-# Copia el JAR generado al contenedor
-COPY target/parcial_final-0.0.1-SNAPSHOT.jar app.jar
+COPY target/parcial-final-n-capas-0.0.1-SNAPSHOT.jar app.jar
 
-# Expón el puerto donde corre la app (ajusta si cambiaste en application.properties)
-EXPOSE 8190
+EXPOSE 8080
 
-# Comando de arranque
 ENTRYPOINT ["java", "-jar", "app.jar"]

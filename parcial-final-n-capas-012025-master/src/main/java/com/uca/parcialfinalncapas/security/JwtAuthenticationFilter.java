@@ -1,15 +1,11 @@
 package com.uca.parcialfinalncapas.security;
 
-<<<<<<< HEAD
 import com.uca.parcialfinalncapas.entities.User;
 import com.uca.parcialfinalncapas.repository.UserRepository;
-=======
->>>>>>> ed0d9c3709e92100b0b62f983b939ab4d88d3039
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,19 +28,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private UserRepository userRepository; // Necesario para obtener el rol
-=======
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.filter.OncePerRequestFilter;
-import java.io.IOException;
-
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
-    private final JwtTokenProvider tokenProvider;
-
-    public JwtAuthenticationFilter(JwtTokenProvider tokenProvider) {
-        this.tokenProvider = tokenProvider;
-    }
->>>>>>> ed0d9c3709e92100b0b62f983b939ab4d88d3039
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -52,7 +35,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
-<<<<<<< HEAD
         String path = request.getRequestURI();
         String method = request.getMethod();
 
@@ -87,26 +69,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
-=======
-        String token = resolveToken(request);
-
-        if (token != null && tokenProvider.validateToken(token)) {
-            var auth = tokenProvider.getAuthentication(token);
-            SecurityContextHolder.getContext().setAuthentication(auth);
->>>>>>> ed0d9c3709e92100b0b62f983b939ab4d88d3039
         }
 
         filterChain.doFilter(request, response);
     }
-<<<<<<< HEAD
-=======
-
-    private String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
-        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7);
-        }
-        return null;
-    }
->>>>>>> ed0d9c3709e92100b0b62f983b939ab4d88d3039
 }
